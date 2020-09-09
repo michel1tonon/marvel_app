@@ -21,7 +21,7 @@ Cada módulo pode conter:
 # Para roda
 
 Use o terminal para criar os arquivos gerados automáticamente do MOBX
-flutter packages pub run build_runner build
+****flutter packages pub run build_runner build****
 
 Após tudo configurado
-flutter run
+****flutter run****
