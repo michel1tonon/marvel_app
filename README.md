@@ -1,5 +1,7 @@
 # marvel_app
 
+![Farmers Market Finder Demo](marvel.gif)
+
 Exemplo de projeto Modular com uso de MVC e Mobx no gerenciamento de estado.
 
 ## Estrutura raiz do projeto
@@ -18,7 +20,7 @@ Cada módulo pode conter:
 - repositories: Sincronização de dados, é possível construir modelo mockado.
 - components: Views utilizadas apenas no módulo em questão.
 
-# Para roda
+# Para rodar
 
 Use o terminal para criar os arquivos gerados automáticamente do MOBX
 ****flutter packages pub run build_runner build****
