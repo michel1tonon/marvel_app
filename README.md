@@ -1,16 +1,20 @@
 # marvel_app
 
-A new Flutter application.
+Exemplo de projeto Modular com uso de MVC.
 
-## Getting Started
+## Estrutura raiz do projeto
 
-This project is a starting point for a Flutter application.
+- modules: Módulos individuais do projeto.
+- shared: Itens que podem ser acessados por vários módulos.
 
-A few resources to get you started if this is your first Flutter project:
+## Estrutura dos módulos.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Cada módulo pode conter:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- controller: Controller principal do módulo.
+- module: Arquivo com definição de rotas e injeção de dependências.
+- page: View principal do módulo
+- store: Armazena dados utilizados no módulo.
+- repositories: Sincronização de dados, é possível construir modelo mockado.
+- components: Views utilizadas apenas no módulo em questão.
+
