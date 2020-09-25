@@ -33,14 +33,28 @@ class _CharacterPageState extends ModularState<CharacterPage, CharacterControlle
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         top: false,
-        child: Observer(
-          builder: (_) => Loading(
-            loading: controller.loading,
-            child: _body(),
-          ),
-        ),
+        child: Stack(
+
+          children: [
+
+            // body
+            Observer(
+              builder: (_) => Loading(
+                loading: controller.loading,
+                child: _body(),
+              ),
+            ),
+
+            // appBar, back button
+            AppBar(
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+            ),
+          ],
+        )
       ),
     );
   }
