@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:marvel_app/app/modules/home/components/character_tile.dart';
 import 'package:marvel_app/app/modules/home/home_controller.dart';
 import 'package:marvel_app/app/modules/home/home_store.dart';
 import 'package:marvel_app/app/shared/components/loading.dart';
+import 'package:marvel_app/app/shared/components/future_observer.dart';
 import 'package:marvel_app/app/shared/constants/modules_constant.dart';
 import 'package:marvel_app/app/shared/helpers/nav.dart';
 import 'package:marvel_app/app/shared/models/character.dart';
@@ -28,7 +28,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Observer(
+      body: FutureObserver(
         builder: (_) => Loading(
           loading: controller.loading,
           child: _body(),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// Standard loading component of the project.
+/// If loading then shows the animation, if ready, displays the child.
 class Loading extends StatelessWidget {
 
   final bool loading;

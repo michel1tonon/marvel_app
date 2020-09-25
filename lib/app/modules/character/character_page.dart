@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:marvel_app/app/modules/character/character_controller.dart';
+import 'package:marvel_app/app/shared/components/future_observer.dart';
 import 'package:marvel_app/app/shared/components/loading.dart';
 import 'package:marvel_app/app/shared/models/character.dart';
 import 'package:marvel_app/app/shared/models/thumbnail.dart';
@@ -41,7 +41,7 @@ class _CharacterPageState extends ModularState<CharacterPage, CharacterControlle
           children: [
 
             // body
-            Observer(
+            FutureObserver(
               builder: (_) => Loading(
                 loading: controller.loading,
                 child: _body(),
