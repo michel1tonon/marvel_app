@@ -28,8 +28,7 @@ dependencies:
   mobx: ^1.2.1                          #important
   flutter_mobx: ^1.1.0                  #important
   dio: ^3.0.9                           #important
-  path_provider: ^1.6.9                 #important
-  auto_size_text: ^2.1.0                #replaceable
+  dwds: ^3.1.1
 
 
   # The following adds the Cupertino Icons font to your application.
