@@ -1,5 +1,4 @@
 # marvel_app
-Projeto desenvolvido para apresentação do Flutter ao pessoal da empresa.
 
 ![Farmers Market Finder Demo](marvel.gif)
 
