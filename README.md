@@ -1,4 +1,4 @@
-# marvel_app
+# Marvel App Flutter
 
 ![Farmers Market Finder Demo](marvel.gif)
 
