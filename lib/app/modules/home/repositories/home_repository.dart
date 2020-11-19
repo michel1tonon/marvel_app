@@ -5,7 +5,7 @@ import 'package:marvel_app/app/shared/repositories/base_repository.dart';
 class HomeRepository extends BaseRepository implements IHomeRepository {
 
   @override
-  Future<ApiResponse> getCharactersList() {
+  Future<ApiResponse> fetchCharactersList() {
     return get("/characters?orderBy=name&limit=30",
         "Message error");
   }

@@ -27,7 +27,7 @@ class _CharacterPageState extends ModularState<CharacterPage, CharacterControlle
   void initState() {
     super.initState();
     // sincroniza personagem.
-    controller.getCharacter();
+    controller.fetchCharacterController();
   }
 
   @override

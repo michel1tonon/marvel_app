@@ -5,7 +5,7 @@ import 'package:marvel_app/app/shared/repositories/base_repository.dart';
 class CharacterRepository extends BaseRepository implements ICharacterRepository {
 
   @override
-  Future<ApiResponse> getCharacter(int id) {
+  Future<ApiResponse> fetchCharacter(int id) {
     return get("/characters/$id",
         "Message error");
   }
