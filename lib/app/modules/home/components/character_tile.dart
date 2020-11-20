@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marvel_app/app/shared/models/character.dart';
 import 'package:marvel_app/app/shared/models/thumbnail.dart';

@@ -1,27 +1,25 @@
-import 'package:marvel_app/app/modules/home/stores/home_access.dart';
-import 'package:marvel_app/app/shared/models/character.dart';
+import 'package:marvel_app/app/modules/home/home_store.dart';
 import 'package:mobx/mobx.dart';
 part 'home_controller.g.dart';
 
 class HomeController = _HomeController with _$HomeController;
 
 // flutter packages pub run build_runner build
-abstract class _HomeController with Store, HomeAccess {
+abstract class _HomeController with Store {
 
   @observable
   bool loading = false;
 
+  final HomeStore homeStore;
+
+  _HomeController(this.homeStore);
+
   // Sync list of characters
   // obs: controller can handle pagination
-  Future<void> fetchHomeController() async {
+  Future<void> fetchHome() async {
     setLoading(true);
-    await super.fetchHomeCharactersList();
+    await homeStore.fetchCharactersList();
     setLoading(false);
-  }
-
-  // return characters
-  List<Character> get characters {
-    return super.getHomeCharacters();
   }
 
   @action

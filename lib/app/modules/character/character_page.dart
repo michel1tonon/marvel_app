@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:marvel_app/app/modules/character/character_controller.dart';
-import 'package:marvel_app/app/shared/components/future_observer.dart';
-import 'package:marvel_app/app/shared/components/loading.dart';
 import 'package:marvel_app/app/shared/models/character.dart';
 import 'package:marvel_app/app/shared/models/thumbnail.dart';
 
@@ -19,9 +17,9 @@ class CharacterPage extends StatefulWidget {
 
 class _CharacterPageState extends ModularState<CharacterPage, CharacterController> {
 
-  _CharacterPageState({Character character}){
-    controller.setCharacter(character);
-  }
+  Character character;
+
+  _CharacterPageState({this.character});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +45,7 @@ class _CharacterPageState extends ModularState<CharacterPage, CharacterControlle
   }
 
   Widget _body() {
-    return controller.character != null ? ListView(
+    return ListView(
       padding: EdgeInsets.zero,
       children: [
         // Image
@@ -61,14 +59,16 @@ class _CharacterPageState extends ModularState<CharacterPage, CharacterControlle
 
         _userName()
       ],
-    ): Container();
+    );
   }
 
   Widget _image() {
-    Thumbnail thumb = controller.character.thumbnail;
+    Thumbnail thumb = character.thumbnail;
     return Hero(
-      tag: "${controller.character.id}",
-      child: Image.network("${thumb.path}.${thumb.extension}"),
+      tag: "${character.id}",
+      child: Image.network(
+          "${thumb.path}.${thumb.extension}"
+      ),
     );
   }
 
@@ -76,7 +76,7 @@ class _CharacterPageState extends ModularState<CharacterPage, CharacterControlle
     return Padding(
       padding: EdgeInsets.all(16),
       child: Text(
-        controller.character.name,
+        character.name,
         style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
       ),
     );
@@ -86,19 +86,19 @@ class _CharacterPageState extends ModularState<CharacterPage, CharacterControlle
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16),
       child: Text(
-        controller.character.description,
+        character.description,
         style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
       ),
     );
   }
 
   Widget _userName() {
-    print("Aqui eu tenho acesso ao conteúdo de usuário sem misturar "
+    print("Aqui eu tenho acesso a store de usuário sem misturar "
         "regras de negócio");
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
       child: Text(
-        controller.getUserName(),
+        controller.userStore.name,
         style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
       ),
     );

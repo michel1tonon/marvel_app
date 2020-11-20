@@ -30,7 +30,8 @@ class AppWidget extends StatelessWidget {
         cardColor: WHITE_COLOR,
         scaffoldBackgroundColor: BACKGROUND_COLOR,
         iconTheme: IconThemeData(color: DARK_COLOR),
-        bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent,),
+        bottomSheetTheme: BottomSheetThemeData(
+          backgroundColor: Colors.transparent,),
         dividerColor: Colors.transparent
       ),
       // set your initial route
