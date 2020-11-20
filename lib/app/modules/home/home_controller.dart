@@ -15,13 +15,13 @@ abstract class _HomeController with Store, HomeAccess {
   // obs: controller can handle pagination
   Future<void> fetchHomeController() async {
     setLoading(true);
-    await super.fetchCharactersList();
+    await super.fetchHomeCharactersList();
     setLoading(false);
   }
 
   // return characters
   List<Character> get characters {
-    return super.getCharacters();
+    return super.getHomeCharacters();
   }
 
   @action

@@ -3,9 +3,9 @@ import 'package:marvel_app/app/shared/models/character.dart';
 
 abstract class IHomeAccess {
 
-  Future<void> fetchCharactersList();
+  Future<void> fetchHomeCharactersList();
 
-  void setCharacters(value);
+  void setHomeCharacters(value);
 
-  List<Character> getCharacters();
+  List<Character> getHomeCharacters();
 }

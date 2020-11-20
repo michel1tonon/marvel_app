@@ -9,18 +9,18 @@ class HomeAccess implements IHomeAccess {
   final HomeStore _homeStore = Modular.get();
 
   @override
-  Future<void> fetchCharactersList() {
-    return _homeStore.fetchCharactersList();
+  Future<void> fetchHomeCharactersList() {
+    return _homeStore.fetchHomeCharactersList();
   }
 
   @override
-  List<Character> getCharacters() {
-    return _homeStore.getCharacters();
+  List<Character> getHomeCharacters() {
+    return _homeStore.getHomeCharacters();
   }
 
   @override
-  void setCharacters(value) {
-    _homeStore.setCharacters(value);
+  void setHomeCharacters(value) {
+    _homeStore.setHomeCharacters(value);
   }
 
 }

@@ -18,7 +18,7 @@ abstract class _HomeStore with Store, IHomeAccess {
   _HomeStore(this._homeRepository);
 
   /// Busca a lista de personagens.
-  Future<void> fetchCharactersList() async {
+  Future<void> fetchHomeCharactersList() async {
     ApiResponse apiResponse = await _homeRepository.fetchCharactersList();
 
     if(apiResponse.ok) {
@@ -26,19 +26,19 @@ abstract class _HomeStore with Store, IHomeAccess {
       apiResponse.result['data']['results'].forEach((character) =>
           characters.add(Character.fromJson(character))
       );
-      setCharacters(characters);
+      setHomeCharacters(characters);
     } else {
       /// create error message view.
     }
   }
 
   @action
-  setCharacters(value){
+  setHomeCharacters(value){
     this.characters = value;
   }
 
   @override
-  List<Character> getCharacters() {
+  List<Character> getHomeCharacters() {
     return characters;
   }
 

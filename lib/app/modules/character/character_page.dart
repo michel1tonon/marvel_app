@@ -14,20 +14,13 @@ class CharacterPage extends StatefulWidget {
 
   @override
   _CharacterPageState createState() =>
-      _CharacterPageState(int.parse(arguments.params['id']), character: arguments.data);
+      _CharacterPageState(character: arguments.data);
 }
 
 class _CharacterPageState extends ModularState<CharacterPage, CharacterController> {
 
-  _CharacterPageState(int id, {Character character}){
-    controller.init(id, character);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    // sincroniza personagem.
-    controller.fetchCharacterController();
+  _CharacterPageState({Character character}){
+    controller.setCharacter(character);
   }
 
   @override
@@ -39,14 +32,8 @@ class _CharacterPageState extends ModularState<CharacterPage, CharacterControlle
         child: Stack(
 
           children: [
-
             // body
-            FutureObserver(
-              builder: (_) => Loading(
-                loading: controller.loading,
-                child: _body(),
-              ),
-            ),
+            _body(),
 
             // appBar, back button
             AppBar(
@@ -71,6 +58,8 @@ class _CharacterPageState extends ModularState<CharacterPage, CharacterControlle
 
         // Description
         _description(),
+
+        _userName()
       ],
     ): Container();
   }
@@ -98,6 +87,18 @@ class _CharacterPageState extends ModularState<CharacterPage, CharacterControlle
       padding: EdgeInsets.symmetric(horizontal: 16),
       child: Text(
         controller.character.description,
+        style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+      ),
+    );
+  }
+
+  Widget _userName() {
+    print("Aqui eu tenho acesso ao conteúdo de usuário sem misturar "
+        "regras de negócio");
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+      child: Text(
+        controller.getUserName(),
         style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
       ),
     );
