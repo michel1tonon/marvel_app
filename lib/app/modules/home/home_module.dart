@@ -8,7 +8,8 @@ import 'package:marvel_app/app/modules/home/repositories/home_repository_interfa
 /// It's a local module.
 class HomeModule extends ChildModule {
 
-  // here will be any class you want to inject into your project (eg bloc, dependency)
+  // here will be any class you want to inject into your project
+  // (eg bloc, dependency)
   @override
   List<Bind> get binds => [
     Bind<IHomeRepository>((_) => HomeRepository()),

@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:marvel_app/app/modules/character/character_controller.dart';
-import 'package:marvel_app/app/shared/components/future_observer.dart';
-import 'package:marvel_app/app/shared/components/loading.dart';
 import 'package:marvel_app/app/shared/models/character.dart';
 import 'package:marvel_app/app/shared/models/thumbnail.dart';
 
@@ -14,21 +12,14 @@ class CharacterPage extends StatefulWidget {
 
   @override
   _CharacterPageState createState() =>
-      _CharacterPageState(int.parse(arguments.params['id']), character: arguments.data);
+      _CharacterPageState(character: arguments.data);
 }
 
 class _CharacterPageState extends ModularState<CharacterPage, CharacterController> {
 
-  _CharacterPageState(int id, {Character character}){
-    controller.init(id, character);
-  }
+  Character character;
 
-  @override
-  void initState() {
-    super.initState();
-    // sincroniza personagem.
-    controller.getCharacter();
-  }
+  _CharacterPageState({this.character});
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +30,8 @@ class _CharacterPageState extends ModularState<CharacterPage, CharacterControlle
         child: Stack(
 
           children: [
-
             // body
-            FutureObserver(
-              builder: (_) => Loading(
-                loading: controller.loading,
-                child: _body(),
-              ),
-            ),
+            _body(),
 
             // appBar, back button
             AppBar(
@@ -60,7 +45,7 @@ class _CharacterPageState extends ModularState<CharacterPage, CharacterControlle
   }
 
   Widget _body() {
-    return controller.character != null ? ListView(
+    return ListView(
       padding: EdgeInsets.zero,
       children: [
         // Image
@@ -71,15 +56,19 @@ class _CharacterPageState extends ModularState<CharacterPage, CharacterControlle
 
         // Description
         _description(),
+
+        _userName()
       ],
-    ): Container();
+    );
   }
 
   Widget _image() {
-    Thumbnail thumb = controller.character.thumbnail;
+    Thumbnail thumb = character.thumbnail;
     return Hero(
-      tag: "${controller.character.id}",
-      child: Image.network("${thumb.path}.${thumb.extension}"),
+      tag: "${character.id}",
+      child: Image.network(
+          "${thumb.path}.${thumb.extension}"
+      ),
     );
   }
 
@@ -87,7 +76,7 @@ class _CharacterPageState extends ModularState<CharacterPage, CharacterControlle
     return Padding(
       padding: EdgeInsets.all(16),
       child: Text(
-        controller.character.name,
+        character.name,
         style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
       ),
     );
@@ -97,7 +86,19 @@ class _CharacterPageState extends ModularState<CharacterPage, CharacterControlle
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16),
       child: Text(
-        controller.character.description,
+        character.description,
+        style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+      ),
+    );
+  }
+
+  Widget _userName() {
+    print("Aqui eu tenho acesso a store de usuário sem misturar "
+        "regras de negócio");
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+      child: Text(
+        controller.userStore.name,
         style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
       ),
     );

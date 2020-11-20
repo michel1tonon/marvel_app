@@ -1,5 +1,4 @@
 import 'package:marvel_app/app/modules/home/home_store.dart';
-import 'package:marvel_app/app/shared/models/character.dart';
 import 'package:mobx/mobx.dart';
 part 'home_controller.g.dart';
 
@@ -11,22 +10,16 @@ abstract class _HomeController with Store {
   @observable
   bool loading = false;
 
-  final HomeStore _homeStore;
+  final HomeStore homeStore;
 
-  // construct with store
-  _HomeController(this._homeStore);
+  _HomeController(this.homeStore);
 
   // Sync list of characters
   // obs: controller can handle pagination
-  Future<void> getCharactersList() async {
+  Future<void> fetchHome() async {
     setLoading(true);
-    await _homeStore.getCharactersList();
+    await homeStore.fetchCharactersList();
     setLoading(false);
-  }
-
-  // return characters
-  List<Character> get characters {
-    return _homeStore.characters;
   }
 
   @action

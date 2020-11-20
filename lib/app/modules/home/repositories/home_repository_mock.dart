@@ -4,8 +4,4 @@ import 'package:mockito/mockito.dart';
 
 class HomeRepositoryMock extends Mock implements IHomeRepository {
 
-  @override
-  Future<ApiResponse> getCharactersList() {
-    return null;
-  }
 }

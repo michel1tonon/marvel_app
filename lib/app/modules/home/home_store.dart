@@ -16,9 +16,8 @@ abstract class _HomeStore with Store {
 
   _HomeStore(this._homeRepository);
 
-  /// Busca a lista de personagens.
-  Future<void> getCharactersList() async {
-    ApiResponse apiResponse = await _homeRepository.getCharactersList();
+  Future<void> fetchCharactersList() async {
+    ApiResponse apiResponse = await _homeRepository.fetchCharactersList();
 
     if(apiResponse.ok) {
       List<Character> characters = <Character>[];
@@ -35,5 +34,4 @@ abstract class _HomeStore with Store {
   setCharacters(value){
     this.characters = value;
   }
-
 }

@@ -22,7 +22,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   void initState() {
     super.initState();
     // sincroniza a lista de personagens.
-    controller.getCharactersList();
+    controller.fetchHome();
   }
 
   @override

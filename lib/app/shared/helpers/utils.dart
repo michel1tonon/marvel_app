@@ -1,24 +1,21 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
+
 import 'package:flutter/services.dart';
 
-/// filter null.
-bool notNull(Object o) => o != null;
-
-/// hide keyboard
-void hideKeyboard(context) =>
-    FocusScope.of(context).requestFocus(new FocusNode());
-
-/// load file json.
-loadJsonAsset(String fileName) async {
+String loadMockFromAssets(String fileName) {
   try {
-    return await rootBundle.loadString('assets/mocks/$fileName.json');
+    // env test or dev.
+    String dir = Directory.current.path;
+    if (dir.endsWith('/test')) {
+      dir = Directory.current.parent.path;
+    }
+    return File('$dir/assets/mocks/$fileName.json').readAsStringSync();
   } catch (e) {
     print('error $e');
   }
   return null;
 }
 
-/// Orientation Portrait
 Future<void> applyPortrait(){
   return SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitDown,
@@ -26,11 +23,4 @@ Future<void> applyPortrait(){
   ]);
 }
 
-/// Orientation Landscape
-Future<void> applyLandscape(){
-  return SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeRight,
-    DeviceOrientation.landscapeLeft,
-  ]);
-}
 
