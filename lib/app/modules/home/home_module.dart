@@ -1,4 +1,5 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:marvel_app/app/environment.dart';
 import 'package:marvel_app/app/modules/home/home_controller.dart';
 import 'package:marvel_app/app/modules/home/home_page.dart';
 import 'package:marvel_app/app/modules/home/home_store.dart';
@@ -12,7 +13,7 @@ class HomeModule extends ChildModule {
   // (eg bloc, dependency)
   @override
   List<Bind> get binds => [
-    Bind<IHomeRepository>((_) => HomeRepository()),
+    Bind<IHomeRepository>((_) => HomeRepository(Modular.get<Environment>())),
     Bind((i) => HomeStore(i.get<IHomeRepository>())),
     Bind((i) => HomeController(i.get<HomeStore>())),
   ];
