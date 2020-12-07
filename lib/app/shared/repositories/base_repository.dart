@@ -10,7 +10,6 @@ class BaseRepository {
   Dio _dio;
 
   BaseRepository(this._environment) {
-    print(_environment);
     _dio = Dio(BaseOptions(
         baseUrl: _environment.baseUrl,
         receiveDataWhenStatusError: true,
